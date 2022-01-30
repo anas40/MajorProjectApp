@@ -1,7 +1,9 @@
 import {
     Box, Center, Icon, Fade
 } from '@chakra-ui/react'
-import { MdOutlineClose } from 'react-icons/md'
+import { MdCancel } from 'react-icons/md'
+import { AiFillCheckCircle } from 'react-icons/ai'
+
 
 import Image from 'next/image'
 import documentImage from '../assets/images/doc.png'
@@ -12,12 +14,24 @@ function FileIconContainer({ files, setFileName, clearFileName, removeFile, hove
             {files.map(file => {
                 return (
                     <Box
+                        key={file.id}
                         onMouseEnter={() => { setFileName(file) }}
                         onMouseLeave={() => { clearFileName() }}
                         position="relative"
                         margin="0 12px"
                         _hover={{ transform: 'scale(0.9)' }}
                     >
+
+                        <Fade in={file.isUploaded}>
+                            <Icon
+                                color="green.500"
+                                fontSize='20'
+                                position="absolute"
+                                left="-3"
+                                top="-3"
+                                as={AiFillCheckCircle}
+                            />
+                        </Fade>
 
                         <Image
                             cursor="pointer"
@@ -29,14 +43,13 @@ function FileIconContainer({ files, setFileName, clearFileName, removeFile, hove
 
                         <Fade in={iconHover && hoveredFile?.id == file.id}>
                             <Icon
-                                color="red.600"
+                                color="red.500"
                                 cursor="pointer"
                                 fontSize='20'
                                 position="absolute"
                                 right="-3"
                                 top="-3"
-                                as={MdOutlineClose}
-                                mr={0}
+                                as={MdCancel}
                                 onClick={() => removeFile(file.id)}
                             />
                         </Fade>

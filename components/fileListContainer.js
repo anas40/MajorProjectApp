@@ -3,6 +3,9 @@ import {
 } from '@chakra-ui/react'
 
 import { MdOutlineClose, MdCheckCircle } from 'react-icons/md'
+import { GoPrimitiveDot } from 'react-icons/go'
+
+
 
 function FileListContainer({ removeAllFiles, files, setFileName, clearFileName, removeFile, hoveredFile, listHover }) {
     return (
@@ -11,7 +14,7 @@ function FileListContainer({ removeAllFiles, files, setFileName, clearFileName, 
                 <Flex justifyContent="space-between" alignItems="center" margin="0 0 18px 0">
                     <Box fontWeight="bold">Total files selected : {files.length}</Box>
                     <ButtonGroup variant='outline' spacing='6' onClick={removeAllFiles}>
-                        <Button colorScheme='pink' variant='solid'>Cancel
+                        <Button colorScheme='pink' variant='solid'>Clear All
                             <Icon
                                 color="white"
                                 ml="4px"
@@ -26,6 +29,7 @@ function FileListContainer({ removeAllFiles, files, setFileName, clearFileName, 
 
             {files.map(file =>
                 <Flex
+                    key={file.id}
                     alignItems="center"
                     justifyContent="space-between"
                     _hover={{ bg: 'gray.100' }}
@@ -35,7 +39,9 @@ function FileListContainer({ removeAllFiles, files, setFileName, clearFileName, 
                     onMouseEnter={() => { setFileName(file, true) }}
                     onMouseLeave={() => { clearFileName(true) }}>
                     <Box>
-                        <ListIcon as={MdCheckCircle} color='green.500' />
+                        <ListIcon
+                            as={file.isUploaded ? MdCheckCircle : GoPrimitiveDot}
+                            color={file.isUploaded ? 'green.500' : 'black'} />
                         {file.file.name}
                     </Box>
                     <Tooltip label='Remove file' fontSize='md' placement='top'>
