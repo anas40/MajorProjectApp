@@ -36,7 +36,7 @@ function FileListContainer({ removeAllFiles, files, setFileName, clearFileName, 
                     padding="8px"
                     borderRadius="4px"
                     transition="all ease 0.3s"
-                    onMouseEnter={() => { setFileName(file, true) }}
+                    onMouseOver={() => { setFileName(file, true) }}
                     onMouseLeave={() => { clearFileName(true) }}>
                     <Box>
                         <ListIcon

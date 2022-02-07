@@ -108,6 +108,7 @@ function Upload() {
     }
 
 
+    // restore the files in the state, after page reloads or open
     useEffect(() => {
 
         const store = localforage.createInstance({
@@ -124,6 +125,7 @@ function Upload() {
 
     }, [])
 
+    //sync the files in indexed db on any change of files
     useEffect(() => {
         const store = localforage.createInstance({
             name: "pdfStore",

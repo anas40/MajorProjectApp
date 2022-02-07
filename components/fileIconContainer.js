@@ -15,7 +15,7 @@ function FileIconContainer({ files, setFileName, clearFileName, removeFile, hove
                 return (
                     <Box
                         key={file.id}
-                        onMouseEnter={() => { setFileName(file) }}
+                        onMouseOver={() => { setFileName(file) }}
                         onMouseLeave={() => { clearFileName() }}
                         position="relative"
                         margin="0 12px"
