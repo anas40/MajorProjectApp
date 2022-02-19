@@ -2,8 +2,10 @@ import {
   Box, Link, Button, Center, Text, Flex
 } from '@chakra-ui/react'
 
-import { BiCloudUpload, } from 'react-icons/bi'
-import { HiOutlineDocumentReport } from 'react-icons/hi'
+import { BiCloudUpload } from 'react-icons/bi'
+import { HiOutlineDocumentReport, HiOutlineDocumentDuplicate } from 'react-icons/hi'
+// import { IoDocumentsOutline} from 'react-icons/io'
+import { SiReadthedocs } from 'react-icons/si'
 
 
 function Home() {
@@ -24,7 +26,12 @@ function Home() {
         <Box width="100%">
 
           <Text textAlign="center" fontSize="5xl" bg="pink.500" color="white" fontWeight="500" padding="20px" >
-            Check Plagiarism
+            <Flex justifyContent="center" alignItems="center">
+              <Text >
+              Check Similarity
+            </Text>
+              <SiReadthedocs />
+            </Flex>
           </Text>
 
         </Box>
